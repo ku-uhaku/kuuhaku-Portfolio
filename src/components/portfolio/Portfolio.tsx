@@ -11,7 +11,7 @@ import { Toaster } from "@/components/ui/sonner";
 
 export function Portfolio() {
   return (
-    <main className="relative min-h-screen bg-background text-foreground overflow-hidden">
+    <main className="relative min-h-screen bg-background text-foreground">
       <Nav />
       <SideIndex />
       <Hero />

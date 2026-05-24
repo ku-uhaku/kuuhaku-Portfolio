@@ -30,11 +30,11 @@ export function SideIndex() {
   }, []);
 
   return (
-    <div className="fixed right-5 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-center gap-4">
-      <div className="relative h-40 w-px bg-border overflow-hidden">
+    <div className="fixed right-5 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-4 lg:flex">
+      <div className="relative h-40 w-px overflow-hidden bg-border/80">
         <motion.div
           style={{ scaleY: progress, transformOrigin: "top" }}
-          className="absolute inset-0 bg-primary"
+          className="absolute inset-0 bg-primary shadow-glow"
         />
       </div>
       <ul className="flex flex-col gap-3 font-mono text-[10px]">
@@ -42,11 +42,22 @@ export function SideIndex() {
           <li key={s.id}>
             <a
               href={`#${s.id}`}
-              className={`block transition-colors ${
-                active === s.id ? "text-primary" : "text-muted-foreground/50"
-              }`}
+              className="group relative flex items-center gap-2"
             >
-              {s.label}
+              <motion.span
+                animate={{
+                  scale: active === s.id ? 1 : 0,
+                  opacity: active === s.id ? 1 : 0,
+                }}
+                className="h-1 w-1 rounded-full bg-primary"
+              />
+              <span
+                className={`transition-colors ${
+                  active === s.id ? "text-primary" : "text-muted-foreground/40 group-hover:text-muted-foreground"
+                }`}
+              >
+                {s.label}
+              </span>
             </a>
           </li>
         ))}
